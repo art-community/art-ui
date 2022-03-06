@@ -17,8 +17,7 @@
  */
 
 import 'package:flutter/widgets.dart';
-
-const BackgroundColor = Color(0xFF18181C);
+import 'package:ui/src/theme/theme.dart';
 
 class Plane extends StatefulWidget {
   final Widget child;
@@ -35,7 +34,7 @@ class PlaneState extends State<Plane> {
   final Widget child;
 
   @override
-  Widget build(BuildContext context) {
-    return Container(color: BackgroundColor, child: Center(child: child));
-  }
+  Widget build(BuildContext context) => Container(
+      color: context.theme().colors.backgroundColor,
+      child: Center(child: child));
 }

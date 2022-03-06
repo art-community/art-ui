@@ -27,14 +27,15 @@ class Button extends StatefulWidget {
 class ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
-    var theme = context.theme();
-    var defaultDecoration = BoxDecoration(
+    final theme = context.theme();
+
+    final defaultDecoration = BoxDecoration(
         shape: BoxShape.rectangle,
-        color: theme.colors.primaryColor,
+        color: theme.colors.backgroundColor,
         borderRadius: BorderRadius.circular(5),
         border: Border.all(color: theme.colors.borderColor));
 
-    var container = Container(
+    final container = Container(
       decoration: defaultDecoration,
       width: 256,
       padding: EdgeInsets.all(16),
@@ -42,6 +43,11 @@ class ButtonState extends State<Button> {
           style: theme.button.textStyle, textAlign: TextAlign.center),
     );
 
-    return container;
+    return PhysicalModel(
+      color: Transparent,
+      shadowColor: theme.colors.primaryColor,
+      elevation: 6,
+      child: container,
+    );
   }
 }

@@ -27,5 +27,5 @@ import 'src/widgets/module.dart';
 export 'src/widgets/button.dart';
 
 void main() {
-  runApp(Module(child: Plane(child: Button())));
+  runApp(Module(title: "ART", child: Plane(child: Button())));
 }

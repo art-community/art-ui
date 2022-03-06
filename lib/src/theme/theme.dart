@@ -3,11 +3,12 @@ import 'package:flutter/widgets.dart';
 
 const DefaultBackgroundColor = Color(0xFF18181C);
 const DefaultPrimaryColor = Color(0xFF40A3FF);
-const DefaultTextColor = Color(0xFF1A1B21);
-const DefaultBorderColor = Color.fromARGB(25, 0, 0, 0);
+const DefaultTextColor = White;
+const DefaultBorderColor = DefaultPrimaryColor;
 const DefaultShadowColor = Color.fromARGB(25, 64, 163, 255);
 const Black = Color(0xFF000000);
 const White = Color(0xFFFFFFFF);
+const Transparent = Color(0x00000000);
 
 class ColorsTheme {
   final Color backgroundColor;

@@ -23,6 +23,19 @@ class ColorsTheme {
       required this.borderColor,
       required this.shadowColor});
 
+  ColorsTheme copyWith(
+          {Color? backgroundColor,
+          Color? primaryColor,
+          Color? textColor,
+          Color? borderColor,
+          Color? shadowColor}) =>
+      ColorsTheme(
+          backgroundColor: backgroundColor ?? this.backgroundColor,
+          primaryColor: primaryColor ?? this.primaryColor,
+          textColor: textColor ?? this.textColor,
+          borderColor: borderColor ?? this.borderColor,
+          shadowColor: shadowColor ?? this.shadowColor);
+
   static final defaultTheme = ColorsTheme(
       backgroundColor: DefaultBackgroundColor,
       primaryColor: DefaultPrimaryColor,
@@ -50,6 +63,9 @@ class ButtonTheme {
 
   ButtonTheme({required this.textStyle});
 
+  ButtonTheme copyWith({TextStyle? textStyle}) =>
+      ButtonTheme(textStyle: textStyle ?? this.textStyle);
+
   static final defaultTheme =
       ButtonTheme(textStyle: TextTheme.defaultTheme.button);
 }
@@ -60,6 +76,12 @@ class Theme {
   final ButtonTheme button;
 
   Theme({required this.colors, required this.text, required this.button});
+
+  Theme copyWith({ColorsTheme? colors, TextTheme? text, ButtonTheme? button}) =>
+      Theme(
+          colors: colors ?? this.colors,
+          text: text ?? this.text,
+          button: button ?? this.button);
 
   static final defaultTheme = Theme(
     colors: ColorsTheme.defaultTheme,

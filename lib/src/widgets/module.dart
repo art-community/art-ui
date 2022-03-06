@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:ui/src/theme/theme.dart';
 
 class Module extends StatelessWidget {
   final Widget child;
@@ -7,6 +8,11 @@ class Module extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(textDirection: TextDirection.ltr, child: child);
+    return Directionality(
+        textDirection: TextDirection.ltr,
+        child: ThemeProvider(
+          theme: Theme.defaultTheme,
+          child: child,
+        ));
   }
 }

@@ -16,7 +16,6 @@
  * limitations under the License.
  */
 
-import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ui/src/theme/theme.dart';
 

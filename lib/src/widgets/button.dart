@@ -17,9 +17,47 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:ui/src/constants/constants.dart';
+import 'package:flutter/widgets.dart';
 
-class Button extends MaterialButton {
-  Button(VoidCallback onPressed)
-      : super(onPressed: onPressed, child: Text(ART));
+const BackgroundColor = Color(0xFF18181C);
+const PrimaryColor = Color(0xFF40A3FF);
+const TextColor = Color(0xFF1A1B21);
+const BorderColor = Color(0xFFFAFBFC);
+const ShadowColor = Color.fromARGB(25, 64, 163, 255);
+const Black = Color(0xFF000000);
+const White = Color(0xFFFFFFFF);
+
+class Button extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => ButtonState();
+}
+
+class ButtonState extends State<Button> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        color: BackgroundColor,
+        child: Center(
+            child: Container(
+          decoration: BoxDecoration(
+              shape: BoxShape.rectangle,
+              color: PrimaryColor,
+              boxShadow: [
+                BoxShadow(
+                    color: ShadowColor, offset: Offset(0, 4), blurRadius: 10)
+              ],
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(color: BorderColor)),
+          padding: EdgeInsets.all(16),
+          child: Text(
+            "Button",
+            style: TextStyle(
+                fontFamily: "Proxima Nova",
+                fontSize: 24,
+                fontWeight: FontWeight.w600,
+                fontStyle: FontStyle.normal,
+                color: TextColor),
+          ),
+        )));
+  }
 }

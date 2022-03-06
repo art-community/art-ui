@@ -139,3 +139,12 @@ zookeeper/
 tarantool/lua
 local/
 runtime/
+flutter/ephemeral/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+x64/
+x86/
+*.[Cc]ache
+!*.[Cc]ache/

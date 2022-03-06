@@ -44,7 +44,7 @@ class ButtonState extends State<Button> {
 
     final defaultDecoration = BoxDecoration(
         shape: BoxShape.rectangle,
-        color: _hovered
+        color: (_hovered && !_focused)
             ? theme.button.hoveredBackgroundColor
             : theme.button.normalBackgroundColor,
         borderRadius: BorderRadius.circular(5),
@@ -56,7 +56,7 @@ class ButtonState extends State<Button> {
     final container = Container(
       decoration: defaultDecoration,
       width: 256,
-      padding: EdgeInsets.all(16),
+      padding: EdgeInsets.all(8),
       child: Text("Button",
           style: theme.button.textStyle, textAlign: TextAlign.center),
     );
@@ -64,13 +64,14 @@ class ButtonState extends State<Button> {
     var physical = PhysicalModel(
       color: Transparent,
       shadowColor: theme.colors.primaryColor,
-      elevation: 6,
+      elevation: 8,
       child: container,
     );
 
     return GestureDetector(
-      onTap: () => _updateFocused(true),
-      onTapDown: (_) => _updateFocused(false),
+      onTapDown: (_) => _updateFocused(true),
+      onTapUp: (_) => _updateFocused(false),
+      onTapCancel: () => _updateFocused(false),
       child: FocusableActionDetector(
         onShowHoverHighlight: _updateHovered,
         child: physical,

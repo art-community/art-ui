@@ -16,6 +16,7 @@
  * limitations under the License.
  */
 
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ui/src/theme/theme_provider.dart';
 
@@ -32,6 +33,7 @@ class ButtonState extends State<Button> {
         color: Theme.PrimaryColor,
         borderRadius: BorderRadius.circular(5),
         border: Border.all(color: Theme.BorderColor));
+
     var container = Container(
       decoration: defaultDecoration,
       width: 256,
@@ -39,6 +41,7 @@ class ButtonState extends State<Button> {
       child: Text("Button",
           style: Theme.ButtonTextStyle, textAlign: TextAlign.center),
     );
+
     return container;
   }
 }

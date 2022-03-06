@@ -1,4 +1,5 @@
 import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
 
 const DefaultBackgroundColor = Color(0xFF18181C);
 const DefaultPrimaryColor = Color(0xFF40A3FF);
@@ -65,4 +66,45 @@ class Theme {
     text: TextTheme.defaultTheme,
     button: ButtonTheme.defaultTheme,
   );
+}
+
+class _InheritedTheme extends InheritedTheme {
+  const _InheritedTheme({
+    Key? key,
+    required this.provider,
+    required Widget child,
+  }) : super(key: key, child: child);
+
+  final ThemeProvider provider;
+
+  @override
+  Widget wrap(BuildContext context, Widget child) {
+    return ThemeProvider(theme: provider.theme, child: child);
+  }
+
+  @override
+  bool updateShouldNotify(_InheritedTheme old) =>
+      provider.theme != old.provider.theme;
+}
+
+class ThemeProvider extends StatelessWidget {
+  final Theme theme;
+  final Widget child;
+
+  ThemeProvider({Key? key, required this.theme, required this.child})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) =>
+      _InheritedTheme(provider: this, child: child);
+}
+
+extension ThemeExtension on BuildContext {
+  Theme theme() {
+    var found = this
+        .dependOnInheritedWidgetOfExactType<_InheritedTheme>()
+        ?.provider
+        .theme;
+    return found ?? Theme.defaultTheme;
+  }
 }

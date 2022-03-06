@@ -18,7 +18,7 @@
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
-import 'package:ui/src/theme/theme_provider.dart';
+import 'package:ui/src/theme/theme.dart';
 
 class Button extends StatefulWidget {
   @override
@@ -28,18 +28,19 @@ class Button extends StatefulWidget {
 class ButtonState extends State<Button> {
   @override
   Widget build(BuildContext context) {
+    var theme = context.theme();
     var defaultDecoration = BoxDecoration(
         shape: BoxShape.rectangle,
-        color: Theme.PrimaryColor,
+        color: theme.colors.primaryColor,
         borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: Theme.BorderColor));
+        border: Border.all(color: theme.colors.borderColor));
 
     var container = Container(
       decoration: defaultDecoration,
       width: 256,
       padding: EdgeInsets.all(16),
       child: Text("Button",
-          style: Theme.ButtonTextStyle, textAlign: TextAlign.center),
+          style: theme.button.textStyle, textAlign: TextAlign.center),
     );
 
     return container;

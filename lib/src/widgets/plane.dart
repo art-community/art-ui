@@ -16,16 +16,26 @@
  * limitations under the License.
  */
 
-library ui;
-
 import 'package:flutter/widgets.dart';
-import 'package:ui/src/widgets/plane.dart';
 
-import 'main.dart';
-import 'src/widgets/module.dart';
+const BackgroundColor = Color(0xFF18181C);
 
-export 'src/widgets/button.dart';
+class Plane extends StatefulWidget {
+  final Widget child;
 
-void main() {
-  runApp(Module(child: Plane(child: Button())));
+  const Plane({Key? key, required this.child}) : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => PlaneState(child);
+}
+
+class PlaneState extends State<Plane> {
+  PlaneState(this.child);
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(color: BackgroundColor, child: Center(child: child));
+  }
 }

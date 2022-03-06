@@ -18,10 +18,8 @@ class Module extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return WidgetsApp(
-        builder: (context, child) => ThemeProvider(
-              theme: Theme.defaultTheme,
-              child: this.child,
-            ),
+        builder: (context, child) =>
+            ThemeProvider(theme: Theme.defaultTheme, child: this.child),
         color: Theme.defaultTheme.colors.primaryColor,
         title: title,
         locale: locale,

@@ -25,15 +25,33 @@ class Button extends StatefulWidget {
 }
 
 class ButtonState extends State<Button> {
+  bool _hovered = false;
+  bool _focused = false;
+
+  _updateHovered(bool hovered) {
+    _hovered = hovered;
+    setState(() {});
+  }
+
+  _updateFocused(bool focused) {
+    _focused = focused;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = context.theme();
 
     final defaultDecoration = BoxDecoration(
         shape: BoxShape.rectangle,
-        color: theme.colors.backgroundColor,
+        color: _hovered
+            ? theme.button.hoveredBackgroundColor
+            : theme.button.normalBackgroundColor,
         borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: theme.colors.borderColor));
+        border: Border.all(
+            color: _focused
+                ? theme.button.focusedBorderColor
+                : theme.button.normalBorderColor));
 
     final container = Container(
       decoration: defaultDecoration,
@@ -43,11 +61,20 @@ class ButtonState extends State<Button> {
           style: theme.button.textStyle, textAlign: TextAlign.center),
     );
 
-    return PhysicalModel(
+    var physical = PhysicalModel(
       color: Transparent,
       shadowColor: theme.colors.primaryColor,
       elevation: 6,
       child: container,
+    );
+
+    return GestureDetector(
+      onTap: () => _updateFocused(true),
+      onTapDown: (_) => _updateFocused(false),
+      child: FocusableActionDetector(
+        onShowHoverHighlight: _updateHovered,
+        child: physical,
+      ),
     );
   }
 }

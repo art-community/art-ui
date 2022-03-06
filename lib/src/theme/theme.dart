@@ -61,14 +61,39 @@ class TextTheme {
 
 class ButtonTheme {
   final TextStyle textStyle;
+  final Color normalBackgroundColor;
+  final Color hoveredBackgroundColor;
+  final Color normalBorderColor;
+  final Color focusedBorderColor;
 
-  ButtonTheme({required this.textStyle});
+  ButtonTheme(
+      {required this.normalBackgroundColor,
+      required this.hoveredBackgroundColor,
+      required this.normalBorderColor,
+      required this.focusedBorderColor,
+      required this.textStyle});
 
-  ButtonTheme copyWith({TextStyle? textStyle}) =>
-      ButtonTheme(textStyle: textStyle ?? this.textStyle);
+  ButtonTheme copyWith(
+          {TextStyle? textStyle,
+          Color? normalBackgroundColor,
+          Color? hoveredBackgroundColor,
+          Color? normalBorderColor,
+          Color? focusedBorderColor}) =>
+      ButtonTheme(
+          textStyle: textStyle ?? this.textStyle,
+          normalBackgroundColor:
+              normalBackgroundColor ?? this.normalBackgroundColor,
+          hoveredBackgroundColor:
+              hoveredBackgroundColor ?? this.hoveredBackgroundColor,
+          normalBorderColor: normalBorderColor ?? this.normalBorderColor,
+          focusedBorderColor: focusedBorderColor ?? this.focusedBorderColor);
 
-  static final defaultTheme =
-      ButtonTheme(textStyle: TextTheme.defaultTheme.button);
+  static final defaultTheme = ButtonTheme(
+      textStyle: TextTheme.defaultTheme.button,
+      normalBackgroundColor: ColorsTheme.defaultTheme.backgroundColor,
+      hoveredBackgroundColor: ColorsTheme.defaultTheme.primaryColor,
+      normalBorderColor: ColorsTheme.defaultTheme.primaryColor,
+      focusedBorderColor: White);
 }
 
 class Theme {

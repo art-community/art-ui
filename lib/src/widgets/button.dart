@@ -85,6 +85,7 @@ class ButtonState extends WidgetState<Button> {
 
   Container _buildContainedContainer(BoxDecoration decoration, Theme theme) =>
       Container(
+        clipBehavior: Clip.antiAlias,
         decoration: decoration,
         width: ButtonWidth,
         padding: EdgeInsets.all(theme.spacing.fullSpacing.medium),
@@ -113,6 +114,7 @@ class ButtonState extends WidgetState<Button> {
 
   Container _buildOutlinedContainer(BoxDecoration decoration, Theme theme) =>
       Container(
+        clipBehavior: Clip.antiAlias,
         decoration: decoration,
         width: ButtonWidth,
         padding: EdgeInsets.all(theme.spacing.fullSpacing.medium),
@@ -170,8 +172,8 @@ class ButtonState extends WidgetState<Button> {
         : _buildOutlinedContainer(decoration, theme);
 
     var physical = PhysicalModel(
+      clipBehavior: Clip.antiAlias,
       color: Transparent,
-      shadowColor: theme.colors.primaryColor,
       elevation: _disabled ? 0 : ButtonElevation,
       child: container,
     );

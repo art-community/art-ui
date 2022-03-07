@@ -91,7 +91,7 @@ class ButtonState extends WidgetState<Button> {
         child: Text(widget.label,
             style: theme.text.button.copyWith(
                 color: _disabled
-                    ? theme.colors.blackTextColor
+                    ? theme.colors.whiteTextColor.withOpacity(DisabledOpacity)
                     : theme.colors.blackTextColor),
             textAlign: TextAlign.center),
       );
@@ -99,7 +99,7 @@ class ButtonState extends WidgetState<Button> {
   BoxDecoration _buildContainedDecoration(Theme theme) => BoxDecoration(
       shape: BoxShape.rectangle,
       color: _disabled
-          ? theme.colors.paneColor
+          ? theme.colors.paneColor.withOpacity(DisabledOpacity)
           : (_hovered && !_focused)
               ? theme.colors.hoverColor
               : theme.colors.primaryColor,

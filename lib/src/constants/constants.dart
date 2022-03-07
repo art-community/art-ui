@@ -16,11 +16,9 @@
  * limitations under the License.
  */
 
-import 'dart:ui';
-
 import 'package:flutter/widgets.dart';
 
-const DisabledOpacity = 0.2;
+const DisabledOpacity = 0.5;
 final ProximaNovaFont = "Proxima Nova";
 final Black = Color(0xFF000000);
 final White = Color(0xFFFFFFFF);
@@ -31,7 +29,7 @@ final DefaultTextWhiteColor = Color(0xFFFAFBFC);
 final DefaultPaneColor = Color(0xFF272834);
 final DefaultPrimaryColor = Color(0xFF40A3FF);
 final DefaultShadowColor = Color.fromARGB(25, 64, 163, 255);
-final DefaultHoverColor = Color(0xFF0063BF);
+final DefaultHoverColor = Color(0xFF007FBF);
 
 final ButtonBorderRadius = BorderRadius.circular(5);
 final double ButtonWidth = 256;

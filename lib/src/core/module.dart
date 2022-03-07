@@ -27,13 +27,13 @@ class Module extends StatelessWidget {
   }
 }
 
-abstract class ModuleService<T extends State> {
+abstract class WidgetService<T extends State> {
   @protected
   late T state;
 
   void initialize(T state) => this.state = state;
 }
 
-abstract class ModuleState<T extends StatefulWidget> extends State<T> {
+abstract class WidgetState<T extends StatefulWidget> extends State<T> {
   void refresh() => setState(() {});
 }

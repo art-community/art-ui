@@ -23,7 +23,7 @@ import 'package:ui/src/theme/theme.dart';
 
 enum ButtonMode { Contained, Outlined }
 
-class ButtonService extends ModuleService<ButtonState> {
+class ButtonService extends WidgetService<ButtonState> {
   void disable() {
     state.disable();
   }
@@ -61,7 +61,7 @@ class Button extends StatefulWidget {
   get disabled => service.disabled;
 }
 
-class ButtonState extends ModuleState<Button> {
+class ButtonState extends WidgetState<Button> {
   bool _hovered = false;
   bool _focused = false;
   bool _disabled = false;

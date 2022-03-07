@@ -10,6 +10,8 @@ const Black = Color(0xFF000000);
 const White = Color(0xFFFFFFFF);
 const Transparent = Color(0x00000000);
 
+const ProximaNovaFont = "Proxima Nova";
+
 class ColorsTheme {
   final Color backgroundColor;
   final Color primaryColor;
@@ -52,7 +54,7 @@ class TextTheme {
 
   static final defaultTheme = TextTheme(
       button: TextStyle(
-          fontFamily: "Proxima Nova",
+          fontFamily: ProximaNovaFont,
           fontSize: 24,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal,

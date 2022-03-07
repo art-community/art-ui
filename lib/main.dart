@@ -27,5 +27,16 @@ import 'src/widgets/module.dart';
 export 'src/widgets/button.dart';
 
 void main() {
-  runApp(Module(title: "ART", child: Plane(child: Button())));
+  var first = Button(label: "Это кнопка");
+  runApp(Module(
+      title: "ART",
+      child: Plane(
+          child: Column(
+        children: [
+          first,
+          Button(
+              label: "Два",
+              clicked: () => first.disabled ? first.enable() : first.disable())
+        ],
+      ))));
 }

@@ -18,24 +18,77 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:ui/src/theme/theme.dart';
+import 'package:ui/src/widgets/module.dart';
 
-class Button extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => ButtonState();
+class ButtonService extends ModuleService<ButtonState> {
+  void disable() {
+    state.disable();
+  }
+
+  void enable() {
+    state.enable();
+  }
+
+  get disabled => state._disabled;
 }
 
-class ButtonState extends State<Button> {
+class Button extends StatefulWidget {
+  final ButtonService service = ButtonService();
+
+  final String label;
+  final bool? defaultDisabled;
+  final VoidCallback? clicked;
+
+  Button({Key? key, required this.label, this.defaultDisabled, this.clicked})
+      : super(key: key);
+
+  @override
+  State<StatefulWidget> createState() => ButtonState(service);
+
+  void disable() => service.disable();
+
+  void enable() => service.enable();
+
+  get disabled => service.disabled;
+}
+
+class ButtonState extends ModuleState<Button> {
   bool _hovered = false;
   bool _focused = false;
+  bool _disabled = false;
+  final ButtonService _service;
+
+  ButtonState(this._service);
 
   _updateHovered(bool hovered) {
+    if (_disabled) return;
     _hovered = hovered;
     setState(() {});
   }
 
   _updateFocused(bool focused) {
+    if (_disabled) return;
+    if (_focused) widget.clicked?.call();
     _focused = focused;
-    setState(() {});
+    refresh();
+  }
+
+  void disable() {
+    _disabled = true;
+    refresh();
+  }
+
+  void enable() {
+    _disabled = false;
+    refresh();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _service.initialize(this);
+    _disabled = widget.defaultDisabled == true;
+    refresh();
   }
 
   @override
@@ -57,7 +110,7 @@ class ButtonState extends State<Button> {
       decoration: defaultDecoration,
       width: 256,
       padding: EdgeInsets.all(8),
-      child: Text("Button",
+      child: Text(widget.label,
           style: theme.button.textStyle, textAlign: TextAlign.center),
     );
 

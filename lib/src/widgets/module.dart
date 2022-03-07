@@ -26,3 +26,14 @@ class Module extends StatelessWidget {
         useInheritedMediaQuery: enableMediaQuery);
   }
 }
+
+abstract class ModuleService<T extends State> {
+  @protected
+  late T state;
+
+  void initialize(T state) => this.state = state;
+}
+
+abstract class ModuleState<T extends StatefulWidget> extends State<T> {
+  void refresh() => setState(() {});
+}

@@ -21,9 +21,10 @@ library ui;
 import 'package:flutter/widgets.dart';
 import 'package:ui/src/widgets/button.dart';
 import 'package:ui/src/widgets/plane.dart';
+import 'package:ui/src/widgets/vertical.dart';
 
 import 'main.dart';
-import 'src/widgets/module.dart';
+import 'src/core/module.dart';
 
 export 'src/widgets/button.dart';
 
@@ -32,7 +33,7 @@ void main() {
   runApp(Module(
       title: "ART",
       child: Plane(
-          child: Column(
+          child: VerticalBox(
         children: [
           first,
           Button(

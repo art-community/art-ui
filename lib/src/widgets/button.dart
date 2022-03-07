@@ -18,8 +18,8 @@
 
 import 'package:flutter/widgets.dart';
 import 'package:ui/src/constants/constants.dart';
+import 'package:ui/src/core/module.dart';
 import 'package:ui/src/theme/theme.dart';
-import 'package:ui/src/widgets/module.dart';
 
 enum ButtonMode { Contained, Outlined }
 
@@ -172,7 +172,7 @@ class ButtonState extends ModuleState<Button> {
     var physical = PhysicalModel(
       color: Transparent,
       shadowColor: theme.colors.primaryColor,
-      elevation: 8,
+      elevation: _disabled ? 0 : 8,
       child: container,
     );
 

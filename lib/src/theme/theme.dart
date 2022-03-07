@@ -14,6 +14,33 @@ final Transparent = Color(0x00000000);
 
 final ProximaNovaFont = "Proxima Nova";
 
+class Spacing {
+  final double extraSmall;
+  final double small;
+  final double medium;
+  final double large;
+  final double extraLarge;
+
+  Spacing(
+      this.extraSmall, this.small, this.medium, this.large, this.extraLarge);
+}
+
+class SpacingTheme {
+  final Spacing verticalSpacing;
+  final Spacing fullSpacing;
+
+  SpacingTheme({required this.verticalSpacing, required this.fullSpacing});
+
+  SpacingTheme copyWith({Spacing? verticalSpacing, Spacing? fullSpacing}) =>
+      SpacingTheme(
+          verticalSpacing: verticalSpacing ?? this.verticalSpacing,
+          fullSpacing: fullSpacing ?? this.fullSpacing);
+
+  static final defaultTheme = SpacingTheme(
+      fullSpacing: Spacing(4, 8, 16, 24, 32),
+      verticalSpacing: Spacing(4, 6, 8, 16, 24));
+}
+
 class ColorsTheme {
   final Color backgroundColor;
   final Color primaryColor;
@@ -73,15 +100,21 @@ class TextTheme {
 }
 
 class Theme {
+  final SpacingTheme spacing;
   final ColorsTheme colors;
   final TextTheme text;
 
-  Theme({required this.colors, required this.text});
+  Theme({required this.spacing, required this.colors, required this.text});
 
-  Theme copyWith({ColorsTheme? colors, TextTheme? text}) =>
-      Theme(colors: colors ?? this.colors, text: text ?? this.text);
+  Theme copyWith(
+          {SpacingTheme? spacing, ColorsTheme? colors, TextTheme? text}) =>
+      Theme(
+          spacing: spacing ?? this.spacing,
+          colors: colors ?? this.colors,
+          text: text ?? this.text);
 
   static final defaultTheme = Theme(
+    spacing: SpacingTheme.defaultTheme,
     colors: ColorsTheme.defaultTheme,
     text: TextTheme.defaultTheme,
   );

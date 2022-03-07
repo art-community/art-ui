@@ -1,49 +1,49 @@
-import 'package:flutter/painting.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-const DefaultBackgroundColor = Color(0xFF18181C);
-const DefaultPrimaryColor = Color(0xFF40A3FF);
-const DefaultTextColor = White;
-const DefaultBorderColor = DefaultPrimaryColor;
-const DefaultShadowColor = Color.fromARGB(25, 64, 163, 255);
-const Black = Color(0xFF000000);
-const White = Color(0xFFFFFFFF);
-const Transparent = Color(0x00000000);
+final DefaultBackgroundColor = Color(0xFF18181C);
+final DefaultDisabledColor = Color(0xFF272834);
+final DefaultPrimaryColor = Color(0xFF40A3FF);
+final DefaultShadowColor = Color.fromARGB(25, 64, 163, 255);
+final Black = Color(0xFF000000);
+final White = Color(0xFFFFFFFF);
+final Transparent = Color(0x00000000);
 
-const ProximaNovaFont = "Proxima Nova";
+final ProximaNovaFont = "Proxima Nova";
 
 class ColorsTheme {
   final Color backgroundColor;
   final Color primaryColor;
   final Color textColor;
-  final Color borderColor;
   final Color shadowColor;
+  final Color disabledColor;
 
   ColorsTheme(
       {required this.backgroundColor,
       required this.primaryColor,
       required this.textColor,
-      required this.borderColor,
-      required this.shadowColor});
+      required this.shadowColor,
+      required this.disabledColor});
 
   ColorsTheme copyWith(
           {Color? backgroundColor,
           Color? primaryColor,
+          Color? disabledColor,
           Color? textColor,
           Color? borderColor,
           Color? shadowColor}) =>
       ColorsTheme(
           backgroundColor: backgroundColor ?? this.backgroundColor,
+          disabledColor: disabledColor ?? this.disabledColor,
           primaryColor: primaryColor ?? this.primaryColor,
           textColor: textColor ?? this.textColor,
-          borderColor: borderColor ?? this.borderColor,
           shadowColor: shadowColor ?? this.shadowColor);
 
   static final defaultTheme = ColorsTheme(
       backgroundColor: DefaultBackgroundColor,
+      disabledColor: DefaultDisabledColor,
       primaryColor: DefaultPrimaryColor,
-      textColor: DefaultTextColor,
-      borderColor: DefaultBorderColor,
+      textColor: White,
       shadowColor: DefaultShadowColor);
 }
 
@@ -61,60 +61,18 @@ class TextTheme {
           color: ColorsTheme.defaultTheme.textColor));
 }
 
-class ButtonTheme {
-  final TextStyle textStyle;
-  final Color normalBackgroundColor;
-  final Color hoveredBackgroundColor;
-  final Color normalBorderColor;
-  final Color focusedBorderColor;
-
-  ButtonTheme(
-      {required this.normalBackgroundColor,
-      required this.hoveredBackgroundColor,
-      required this.normalBorderColor,
-      required this.focusedBorderColor,
-      required this.textStyle});
-
-  ButtonTheme copyWith(
-          {TextStyle? textStyle,
-          Color? normalBackgroundColor,
-          Color? hoveredBackgroundColor,
-          Color? normalBorderColor,
-          Color? focusedBorderColor}) =>
-      ButtonTheme(
-          textStyle: textStyle ?? this.textStyle,
-          normalBackgroundColor:
-              normalBackgroundColor ?? this.normalBackgroundColor,
-          hoveredBackgroundColor:
-              hoveredBackgroundColor ?? this.hoveredBackgroundColor,
-          normalBorderColor: normalBorderColor ?? this.normalBorderColor,
-          focusedBorderColor: focusedBorderColor ?? this.focusedBorderColor);
-
-  static final defaultTheme = ButtonTheme(
-      textStyle: TextTheme.defaultTheme.button,
-      normalBackgroundColor: ColorsTheme.defaultTheme.backgroundColor,
-      hoveredBackgroundColor: ColorsTheme.defaultTheme.primaryColor,
-      normalBorderColor: ColorsTheme.defaultTheme.primaryColor,
-      focusedBorderColor: White);
-}
-
 class Theme {
   final ColorsTheme colors;
   final TextTheme text;
-  final ButtonTheme button;
 
-  Theme({required this.colors, required this.text, required this.button});
+  Theme({required this.colors, required this.text});
 
-  Theme copyWith({ColorsTheme? colors, TextTheme? text, ButtonTheme? button}) =>
-      Theme(
-          colors: colors ?? this.colors,
-          text: text ?? this.text,
-          button: button ?? this.button);
+  Theme copyWith({ColorsTheme? colors, TextTheme? text}) =>
+      Theme(colors: colors ?? this.colors, text: text ?? this.text);
 
   static final defaultTheme = Theme(
     colors: ColorsTheme.defaultTheme,
     text: TextTheme.defaultTheme,
-    button: ButtonTheme.defaultTheme,
   );
 }
 

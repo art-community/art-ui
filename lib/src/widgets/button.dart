@@ -16,6 +16,7 @@
  * limitations under the License.
  */
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ui/src/theme/theme.dart';
 import 'package:ui/src/widgets/module.dart';
@@ -97,21 +98,21 @@ class ButtonState extends ModuleState<Button> {
 
     final defaultDecoration = BoxDecoration(
         shape: BoxShape.rectangle,
-        color: (_hovered && !_focused)
-            ? theme.button.hoveredBackgroundColor
-            : theme.button.normalBackgroundColor,
+        color: _disabled
+            ? theme.colors.disabledColor
+            : (_hovered && !_focused)
+                ? theme.colors.primaryColor
+                : theme.colors.backgroundColor,
         borderRadius: BorderRadius.circular(5),
-        border: Border.all(
-            color: _focused
-                ? theme.button.focusedBorderColor
-                : theme.button.normalBorderColor));
+        border:
+            Border.all(color: _focused ? White : theme.colors.primaryColor));
 
     final container = Container(
       decoration: defaultDecoration,
       width: 256,
       padding: EdgeInsets.all(8),
       child: Text(widget.label,
-          style: theme.button.textStyle, textAlign: TextAlign.center),
+          style: theme.text.button, textAlign: TextAlign.center),
     );
 
     var physical = PhysicalModel(

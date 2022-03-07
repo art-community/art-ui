@@ -172,7 +172,7 @@ class ButtonState extends ModuleState<Button> {
     var physical = PhysicalModel(
       color: Transparent,
       shadowColor: theme.colors.primaryColor,
-      elevation: _disabled ? 0 : 8,
+      elevation: _disabled ? 0 : ButtonElevation,
       child: container,
     );
 

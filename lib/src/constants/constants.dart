@@ -35,3 +35,4 @@ final DefaultHoverColor = Color(0xFF0063BF);
 
 final ButtonBorderRadius = BorderRadius.circular(5);
 final double ButtonWidth = 256;
+final double ButtonElevation = 8;

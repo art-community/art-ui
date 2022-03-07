@@ -9,14 +9,11 @@ part 'theme.g.dart';
 
 @CopyWith()
 class SpacingTheme {
-  final Spacing verticalSpacing;
-  final Spacing fullSpacing;
+  final Spacing spacing;
 
-  SpacingTheme({required this.verticalSpacing, required this.fullSpacing});
+  SpacingTheme({required this.spacing});
 
-  static final defaultTheme = SpacingTheme(
-      fullSpacing: Spacing(4, 6, 8, 16, 32),
-      verticalSpacing: Spacing(4, 6, 8, 16, 24));
+  static final defaultTheme = SpacingTheme(spacing: Spacing(4, 6, 8, 16, 24));
 }
 
 @CopyWith()

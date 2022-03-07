@@ -7,9 +7,7 @@ part of 'theme.dart';
 // **************************************************************************
 
 abstract class _$SpacingThemeCWProxy {
-  SpacingTheme fullSpacing(Spacing fullSpacing);
-
-  SpacingTheme verticalSpacing(Spacing verticalSpacing);
+  SpacingTheme spacing(Spacing spacing);
 
   /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SpacingTheme(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
   ///
@@ -18,8 +16,7 @@ abstract class _$SpacingThemeCWProxy {
   /// SpacingTheme(...).copyWith(id: 12, name: "My name")
   /// ````
   SpacingTheme call({
-    Spacing? fullSpacing,
-    Spacing? verticalSpacing,
+    Spacing? spacing,
   });
 }
 
@@ -30,12 +27,7 @@ class _$SpacingThemeCWProxyImpl implements _$SpacingThemeCWProxy {
   const _$SpacingThemeCWProxyImpl(this._value);
 
   @override
-  SpacingTheme fullSpacing(Spacing fullSpacing) =>
-      this(fullSpacing: fullSpacing);
-
-  @override
-  SpacingTheme verticalSpacing(Spacing verticalSpacing) =>
-      this(verticalSpacing: verticalSpacing);
+  SpacingTheme spacing(Spacing spacing) => this(spacing: spacing);
 
   @override
 
@@ -46,20 +38,13 @@ class _$SpacingThemeCWProxyImpl implements _$SpacingThemeCWProxy {
   /// SpacingTheme(...).copyWith(id: 12, name: "My name")
   /// ````
   SpacingTheme call({
-    Object? fullSpacing = const $CopyWithPlaceholder(),
-    Object? verticalSpacing = const $CopyWithPlaceholder(),
+    Object? spacing = const $CopyWithPlaceholder(),
   }) {
     return SpacingTheme(
-      fullSpacing:
-          fullSpacing == const $CopyWithPlaceholder() || fullSpacing == null
-              ? _value.fullSpacing
-              // ignore: cast_nullable_to_non_nullable
-              : fullSpacing as Spacing,
-      verticalSpacing: verticalSpacing == const $CopyWithPlaceholder() ||
-              verticalSpacing == null
-          ? _value.verticalSpacing
+      spacing: spacing == const $CopyWithPlaceholder() || spacing == null
+          ? _value.spacing
           // ignore: cast_nullable_to_non_nullable
-          : verticalSpacing as Spacing,
+          : spacing as Spacing,
     );
   }
 }

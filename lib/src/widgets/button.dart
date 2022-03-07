@@ -105,7 +105,7 @@ class ButtonState extends WidgetState<Button> {
         clipBehavior: Clip.antiAlias,
         decoration: decoration,
         width: ButtonWidth,
-        padding: EdgeInsets.all(theme.spacing.fullSpacing.medium),
+        padding: EdgeInsets.all(theme.spacing.spacing.medium),
         child: Text(widget.label,
             style: theme.text.button.copyWith(
                 color: _disabled
@@ -134,7 +134,7 @@ class ButtonState extends WidgetState<Button> {
         clipBehavior: Clip.antiAlias,
         decoration: decoration,
         width: ButtonWidth,
-        padding: EdgeInsets.all(theme.spacing.fullSpacing.medium),
+        padding: EdgeInsets.all(theme.spacing.spacing.medium),
         child: Text(widget.label,
             style: theme.text.button.copyWith(
                 color: _disabled

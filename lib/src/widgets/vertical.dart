@@ -11,7 +11,7 @@ class VerticalBox extends StatelessWidget {
         children: children
             .map((widget) => Padding(
                   padding: EdgeInsets.all(
-                      context.theme().spacing.verticalSpacing.medium),
+                      context.theme().spacing.spacing.medium),
                   child: widget,
                 ))
             .toList(),

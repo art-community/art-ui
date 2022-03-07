@@ -29,7 +29,10 @@ import 'src/core/module.dart';
 export 'src/widgets/button.dart';
 
 void main() {
-  var first = Button(label: "Первая кнопка", mode: ButtonMode.Contained);
+  var first = Button(
+      label: "Первая кнопка",
+      mode: ButtonMode.Contained,
+      view: ButtonView.Circular);
   runApp(Module(
       title: "ART",
       child: Plane(
@@ -37,6 +40,7 @@ void main() {
         children: [
           first,
           Button(
+              view: ButtonView.Rectangle,
               label: "Вторая кнопка",
               clicked: () => first.disabled ? first.enable() : first.disable())
         ],

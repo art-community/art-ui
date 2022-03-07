@@ -31,6 +31,8 @@ final DefaultPrimaryColor = Color(0xFF40A3FF);
 final DefaultShadowColor = Color.fromARGB(25, 64, 163, 255);
 final DefaultHoverColor = Color(0xFF007FBF);
 
-final ButtonBorderRadius = BorderRadius.circular(5);
+final RectangleBorder = BorderRadius.circular(1);
+final RoundedBorder = BorderRadius.circular(5);
+final CircularBorder = BorderRadius.circular(20);
 final double ButtonWidth = 256;
 final double ButtonElevation = 8;

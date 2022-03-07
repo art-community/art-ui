@@ -23,6 +23,21 @@ import 'package:ui/src/theme/theme.dart';
 
 enum ButtonMode { Contained, Outlined }
 
+enum ButtonView { Rectangle, Rounded, Circular }
+
+extension ButtonViewRadius on ButtonView {
+  BorderRadius radius() {
+    switch (this) {
+      case ButtonView.Rectangle:
+        return RectangleBorder;
+      case ButtonView.Rounded:
+        return RoundedBorder;
+      case ButtonView.Circular:
+        return CircularBorder;
+    }
+  }
+}
+
 class ButtonService extends WidgetService<ButtonState> {
   void disable() {
     state.disable();
@@ -42,13 +57,15 @@ class Button extends StatefulWidget {
   final bool? defaultDisabled;
   final VoidCallback? clicked;
   final ButtonMode mode;
+  final ButtonView view;
 
   Button(
       {Key? key,
       required this.label,
       this.defaultDisabled,
       this.clicked,
-      this.mode = ButtonMode.Outlined})
+      this.mode = ButtonMode.Outlined,
+      this.view = ButtonView.Rounded})
       : super(key: key);
 
   @override
@@ -104,7 +121,7 @@ class ButtonState extends WidgetState<Button> {
           : (_hovered && !_focused)
               ? theme.colors.hoverColor
               : theme.colors.primaryColor,
-      borderRadius: ButtonBorderRadius,
+      borderRadius: widget.view.radius(),
       border: Border.all(
           color: _disabled
               ? theme.colors.paneColor
@@ -133,7 +150,7 @@ class ButtonState extends WidgetState<Button> {
           : (_hovered && !_focused)
               ? theme.colors.primaryColor
               : theme.colors.backgroundColor,
-      borderRadius: ButtonBorderRadius,
+      borderRadius: widget.view.radius(),
       border: Border.all(
           color: _disabled
               ? theme.colors.primaryColor.withOpacity(DisabledOpacity)

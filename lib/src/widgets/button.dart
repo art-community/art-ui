@@ -18,6 +18,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:ui/src/constants/constants.dart';
 import 'package:ui/src/theme/theme.dart';
 import 'package:ui/src/widgets/module.dart';
 
@@ -96,28 +97,36 @@ class ButtonState extends ModuleState<Button> {
   Widget build(BuildContext context) {
     final theme = context.theme();
 
-    final defaultDecoration = BoxDecoration(
+    final decoration = BoxDecoration(
         shape: BoxShape.rectangle,
         color: _disabled
-            ? theme.colors.disabledColor
+            ? theme.colors.backgroundColor
             : (_hovered && !_focused)
                 ? theme.colors.primaryColor
                 : theme.colors.backgroundColor,
         borderRadius: BorderRadius.circular(5),
-        border:
-            Border.all(color: _focused ? White : theme.colors.primaryColor));
+        border: Border.all(
+            color: _disabled
+                ? theme.colors.primaryColor.withOpacity(DisabledOpacity)
+                : _focused
+                    ? White
+                    : theme.colors.primaryColor));
 
     final container = Container(
-      decoration: defaultDecoration,
+      decoration: decoration,
       width: 256,
       padding: EdgeInsets.all(8),
       child: Text(widget.label,
-          style: theme.text.button, textAlign: TextAlign.center),
+          style: theme.text.button.copyWith(
+              color: _disabled
+                  ? theme.text.button.color?.withOpacity(DisabledOpacity)
+                  : theme.text.button.color),
+          textAlign: TextAlign.center),
     );
 
     var physical = PhysicalModel(
       color: Transparent,
-      shadowColor: theme.colors.primaryColor,
+      shadowColor: theme.colors.shadowColor,
       elevation: 8,
       child: container,
     );

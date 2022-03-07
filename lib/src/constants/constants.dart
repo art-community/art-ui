@@ -16,4 +16,4 @@
  * limitations under the License.
  */
 
-const ART = "art";
+const DisabledOpacity = 0.2;

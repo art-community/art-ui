@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 final DefaultBackgroundColor = Color(0xFF18181C);
-final DefaultDisabledColor = Color(0xFF272834);
+final DefaultPaneColor = Color(0xFF272834);
 final DefaultPrimaryColor = Color(0xFF40A3FF);
 final DefaultShadowColor = Color.fromARGB(25, 64, 163, 255);
 final Black = Color(0xFF000000);
@@ -16,32 +16,32 @@ class ColorsTheme {
   final Color primaryColor;
   final Color textColor;
   final Color shadowColor;
-  final Color disabledColor;
+  final Color paneColor;
 
   ColorsTheme(
       {required this.backgroundColor,
       required this.primaryColor,
       required this.textColor,
       required this.shadowColor,
-      required this.disabledColor});
+      required this.paneColor});
 
   ColorsTheme copyWith(
           {Color? backgroundColor,
           Color? primaryColor,
-          Color? disabledColor,
+          Color? paneColor,
           Color? textColor,
           Color? borderColor,
           Color? shadowColor}) =>
       ColorsTheme(
           backgroundColor: backgroundColor ?? this.backgroundColor,
-          disabledColor: disabledColor ?? this.disabledColor,
+          paneColor: paneColor ?? this.paneColor,
           primaryColor: primaryColor ?? this.primaryColor,
           textColor: textColor ?? this.textColor,
           shadowColor: shadowColor ?? this.shadowColor);
 
   static final defaultTheme = ColorsTheme(
       backgroundColor: DefaultBackgroundColor,
-      disabledColor: DefaultDisabledColor,
+      paneColor: DefaultPaneColor,
       primaryColor: DefaultPrimaryColor,
       textColor: White,
       shadowColor: DefaultShadowColor);

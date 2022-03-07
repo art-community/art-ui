@@ -108,7 +108,7 @@ class ButtonState extends ModuleState<Button> {
           color: _disabled
               ? theme.colors.paneColor
               : _focused
-                  ? theme.colors.whiteColor
+                  ? theme.colors.whiteTextColor
                   : theme.colors.primaryColor));
 
   Container _buildOutlinedContainer(BoxDecoration decoration, Theme theme) =>
@@ -119,8 +119,8 @@ class ButtonState extends ModuleState<Button> {
         child: Text(widget.label,
             style: theme.text.button.copyWith(
                 color: _disabled
-                    ? theme.colors.whiteColor.withOpacity(DisabledOpacity)
-                    : theme.colors.whiteColor),
+                    ? theme.colors.whiteTextColor.withOpacity(DisabledOpacity)
+                    : theme.colors.whiteTextColor),
             textAlign: TextAlign.center),
       );
 

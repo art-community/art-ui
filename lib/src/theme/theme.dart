@@ -1,29 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-final DefaultBackgroundColor = Color(0xFF18181C);
-final DefaultTextBlackColor = Color(0xFF1A1B21);
-final DefaultPaneColor = Color(0xFF272834);
-final DefaultWhiteColor = Color(0xFFFAFBFC);
-final DefaultPrimaryColor = Color(0xFF40A3FF);
-final DefaultShadowColor = Color.fromARGB(25, 64, 163, 255);
-final DefaultHoverColor = Color(0xFF0063BF);
-final Black = Color(0xFF000000);
-final White = Color(0xFFFFFFFF);
-final Transparent = Color(0x00000000);
-
-final ProximaNovaFont = "Proxima Nova";
-
-class Spacing {
-  final double extraSmall;
-  final double small;
-  final double medium;
-  final double large;
-  final double extraLarge;
-
-  Spacing(
-      this.extraSmall, this.small, this.medium, this.large, this.extraLarge);
-}
+import '../constants/constants.dart';
+import '../model/spacing.dart';
 
 class SpacingTheme {
   final Spacing verticalSpacing;
@@ -45,8 +24,8 @@ class ColorsTheme {
   final Color backgroundColor;
   final Color primaryColor;
   final Color blackTextColor;
+  final Color whiteTextColor;
   final Color hoverColor;
-  final Color whiteColor;
   final Color shadowColor;
   final Color paneColor;
 
@@ -54,7 +33,7 @@ class ColorsTheme {
       {required this.backgroundColor,
       required this.primaryColor,
       required this.blackTextColor,
-      required this.whiteColor,
+      required this.whiteTextColor,
       required this.shadowColor,
       required this.hoverColor,
       required this.paneColor});
@@ -64,7 +43,7 @@ class ColorsTheme {
           Color? primaryColor,
           Color? paneColor,
           Color? blackTextColor,
-          Color? whiteColor,
+          Color? whiteTextColor,
           Color? hoverColor,
           Color? shadowColor}) =>
       ColorsTheme(
@@ -72,7 +51,7 @@ class ColorsTheme {
           paneColor: paneColor ?? this.paneColor,
           primaryColor: primaryColor ?? this.primaryColor,
           blackTextColor: blackTextColor ?? this.blackTextColor,
-          whiteColor: whiteColor ?? this.whiteColor,
+          whiteTextColor: whiteTextColor ?? this.whiteTextColor,
           hoverColor: hoverColor ?? this.hoverColor,
           shadowColor: shadowColor ?? this.shadowColor);
 
@@ -81,8 +60,8 @@ class ColorsTheme {
       paneColor: DefaultPaneColor,
       primaryColor: DefaultPrimaryColor,
       blackTextColor: DefaultTextBlackColor,
+      whiteTextColor: DefaultTextWhitekColor,
       hoverColor: DefaultHoverColor,
-      whiteColor: DefaultWhiteColor,
       shadowColor: DefaultShadowColor);
 }
 

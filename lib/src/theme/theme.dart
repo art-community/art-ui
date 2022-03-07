@@ -60,7 +60,7 @@ class ColorsTheme {
       paneColor: DefaultPaneColor,
       primaryColor: DefaultPrimaryColor,
       blackTextColor: DefaultTextBlackColor,
-      whiteTextColor: DefaultTextWhitekColor,
+      whiteTextColor: DefaultTextWhiteColor,
       hoverColor: DefaultHoverColor,
       shadowColor: DefaultShadowColor);
 }

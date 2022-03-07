@@ -86,8 +86,8 @@ class ButtonState extends ModuleState<Button> {
   Container _buildContainedContainer(BoxDecoration decoration, Theme theme) =>
       Container(
         decoration: decoration,
-        width: 256,
-        padding: EdgeInsets.all(8),
+        width: ButtonWidth,
+        padding: EdgeInsets.all(theme.spacing.fullSpacing.medium),
         child: Text(widget.label,
             style: theme.text.button.copyWith(
                 color: _disabled
@@ -103,7 +103,7 @@ class ButtonState extends ModuleState<Button> {
           : (_hovered && !_focused)
               ? theme.colors.hoverColor
               : theme.colors.primaryColor,
-      borderRadius: BorderRadius.circular(5),
+      borderRadius: ButtonBorderRadius,
       border: Border.all(
           color: _disabled
               ? theme.colors.paneColor
@@ -114,8 +114,8 @@ class ButtonState extends ModuleState<Button> {
   Container _buildOutlinedContainer(BoxDecoration decoration, Theme theme) =>
       Container(
         decoration: decoration,
-        width: 256,
-        padding: EdgeInsets.all(8),
+        width: ButtonWidth,
+        padding: EdgeInsets.all(theme.spacing.fullSpacing.medium),
         child: Text(widget.label,
             style: theme.text.button.copyWith(
                 color: _disabled
@@ -131,7 +131,7 @@ class ButtonState extends ModuleState<Button> {
           : (_hovered && !_focused)
               ? theme.colors.primaryColor
               : theme.colors.backgroundColor,
-      borderRadius: BorderRadius.circular(5),
+      borderRadius: ButtonBorderRadius,
       border: Border.all(
           color: _disabled
               ? theme.colors.primaryColor.withOpacity(DisabledOpacity)

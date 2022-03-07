@@ -74,7 +74,7 @@ class TextTheme {
       button: TextStyle(
           fontFamily: ProximaNovaFont,
           fontSize: 24,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w400,
           fontStyle: FontStyle.normal));
 }
 

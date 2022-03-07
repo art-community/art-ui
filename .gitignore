@@ -139,7 +139,8 @@ zookeeper/
 tarantool/lua
 local/
 runtime/
-flutter/ephemeral/
+flutter/ephemeral
+*/flutter/ephemeral/*
 *.suo
 *.user
 *.userosscache

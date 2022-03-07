@@ -1,25 +1,25 @@
+import 'package:copy_with_extension/copy_with_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 import '../constants/constants.dart';
 import '../model/spacing.dart';
 
+part 'theme.g.dart';
+
+@CopyWith()
 class SpacingTheme {
   final Spacing verticalSpacing;
   final Spacing fullSpacing;
 
   SpacingTheme({required this.verticalSpacing, required this.fullSpacing});
 
-  SpacingTheme copyWith({Spacing? verticalSpacing, Spacing? fullSpacing}) =>
-      SpacingTheme(
-          verticalSpacing: verticalSpacing ?? this.verticalSpacing,
-          fullSpacing: fullSpacing ?? this.fullSpacing);
-
   static final defaultTheme = SpacingTheme(
       fullSpacing: Spacing(4, 6, 8, 16, 32),
       verticalSpacing: Spacing(4, 6, 8, 16, 24));
 }
 
+@CopyWith()
 class ColorsTheme {
   final Color backgroundColor;
   final Color primaryColor;
@@ -38,23 +38,6 @@ class ColorsTheme {
       required this.hoverColor,
       required this.paneColor});
 
-  ColorsTheme copyWith(
-          {Color? backgroundColor,
-          Color? primaryColor,
-          Color? paneColor,
-          Color? blackTextColor,
-          Color? whiteTextColor,
-          Color? hoverColor,
-          Color? shadowColor}) =>
-      ColorsTheme(
-          backgroundColor: backgroundColor ?? this.backgroundColor,
-          paneColor: paneColor ?? this.paneColor,
-          primaryColor: primaryColor ?? this.primaryColor,
-          blackTextColor: blackTextColor ?? this.blackTextColor,
-          whiteTextColor: whiteTextColor ?? this.whiteTextColor,
-          hoverColor: hoverColor ?? this.hoverColor,
-          shadowColor: shadowColor ?? this.shadowColor);
-
   static final defaultTheme = ColorsTheme(
       backgroundColor: DefaultBackgroundColor,
       paneColor: DefaultPaneColor,
@@ -65,6 +48,7 @@ class ColorsTheme {
       shadowColor: DefaultShadowColor);
 }
 
+@CopyWith()
 class TextTheme {
   final TextStyle button;
 
@@ -78,19 +62,13 @@ class TextTheme {
           fontStyle: FontStyle.normal));
 }
 
+@CopyWith()
 class Theme {
   final SpacingTheme spacing;
   final ColorsTheme colors;
   final TextTheme text;
 
   Theme({required this.spacing, required this.colors, required this.text});
-
-  Theme copyWith(
-          {SpacingTheme? spacing, ColorsTheme? colors, TextTheme? text}) =>
-      Theme(
-          spacing: spacing ?? this.spacing,
-          colors: colors ?? this.colors,
-          text: text ?? this.text);
 
   static final defaultTheme = Theme(
     spacing: SpacingTheme.defaultTheme,

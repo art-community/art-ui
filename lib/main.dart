@@ -19,6 +19,7 @@
 library ui;
 
 import 'package:flutter/widgets.dart';
+import 'package:ui/src/widgets/button.dart';
 import 'package:ui/src/widgets/plane.dart';
 
 import 'main.dart';
@@ -27,7 +28,7 @@ import 'src/widgets/module.dart';
 export 'src/widgets/button.dart';
 
 void main() {
-  var first = Button(label: "Это кнопка");
+  var first = Button(label: "Это кнопка", mode: ButtonMode.Contained);
   runApp(Module(
       title: "ART",
       child: Plane(

@@ -16,11 +16,12 @@
  * limitations under the License.
  */
 
-import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ui/src/constants/constants.dart';
 import 'package:ui/src/theme/theme.dart';
 import 'package:ui/src/widgets/module.dart';
+
+enum ButtonMode { Contained, Outlined }
 
 class ButtonService extends ModuleService<ButtonState> {
   void disable() {
@@ -40,12 +41,18 @@ class Button extends StatefulWidget {
   final String label;
   final bool? defaultDisabled;
   final VoidCallback? clicked;
+  final ButtonMode mode;
 
-  Button({Key? key, required this.label, this.defaultDisabled, this.clicked})
+  Button(
+      {Key? key,
+      required this.label,
+      this.defaultDisabled,
+      this.clicked,
+      this.mode = ButtonMode.Outlined})
       : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => ButtonState(service);
+  State<StatefulWidget> createState() => ButtonState(service, mode);
 
   void disable() => service.disable();
 
@@ -59,8 +66,9 @@ class ButtonState extends ModuleState<Button> {
   bool _focused = false;
   bool _disabled = false;
   final ButtonService _service;
+  final ButtonMode _mode;
 
-  ButtonState(this._service);
+  ButtonState(this._service, this._mode);
 
   _updateHovered(bool hovered) {
     if (_disabled) return;
@@ -74,6 +82,62 @@ class ButtonState extends ModuleState<Button> {
     _focused = focused;
     refresh();
   }
+
+  Container _buildContainedContainer(BoxDecoration decoration, Theme theme) =>
+      Container(
+        decoration: decoration,
+        width: 256,
+        padding: EdgeInsets.all(8),
+        child: Text(widget.label,
+            style: theme.text.button.copyWith(
+                color: _disabled
+                    ? theme.colors.blackTextColor
+                    : theme.colors.blackTextColor),
+            textAlign: TextAlign.center),
+      );
+
+  BoxDecoration _buildContainedDecoration(Theme theme) => BoxDecoration(
+      shape: BoxShape.rectangle,
+      color: _disabled
+          ? theme.colors.paneColor
+          : (_hovered && !_focused)
+              ? theme.colors.hoverColor
+              : theme.colors.primaryColor,
+      borderRadius: BorderRadius.circular(5),
+      border: Border.all(
+          color: _disabled
+              ? theme.colors.paneColor
+              : _focused
+                  ? theme.colors.whiteColor
+                  : theme.colors.primaryColor));
+
+  Container _buildOutlinedContainer(BoxDecoration decoration, Theme theme) =>
+      Container(
+        decoration: decoration,
+        width: 256,
+        padding: EdgeInsets.all(8),
+        child: Text(widget.label,
+            style: theme.text.button.copyWith(
+                color: _disabled
+                    ? theme.colors.whiteColor.withOpacity(DisabledOpacity)
+                    : theme.colors.whiteColor),
+            textAlign: TextAlign.center),
+      );
+
+  BoxDecoration _buildOutlinedDecoration(Theme theme) => BoxDecoration(
+      shape: BoxShape.rectangle,
+      color: _disabled
+          ? theme.colors.backgroundColor
+          : (_hovered && !_focused)
+              ? theme.colors.primaryColor
+              : theme.colors.backgroundColor,
+      borderRadius: BorderRadius.circular(5),
+      border: Border.all(
+          color: _disabled
+              ? theme.colors.primaryColor.withOpacity(DisabledOpacity)
+              : _focused
+                  ? White
+                  : theme.colors.primaryColor));
 
   void disable() {
     _disabled = true;
@@ -97,32 +161,13 @@ class ButtonState extends ModuleState<Button> {
   Widget build(BuildContext context) {
     final theme = context.theme();
 
-    final decoration = BoxDecoration(
-        shape: BoxShape.rectangle,
-        color: _disabled
-            ? theme.colors.backgroundColor
-            : (_hovered && !_focused)
-                ? theme.colors.primaryColor
-                : theme.colors.backgroundColor,
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(
-            color: _disabled
-                ? theme.colors.primaryColor.withOpacity(DisabledOpacity)
-                : _focused
-                    ? White
-                    : theme.colors.primaryColor));
+    final decoration = _mode == ButtonMode.Contained
+        ? _buildContainedDecoration(theme)
+        : _buildOutlinedDecoration(theme);
 
-    final container = Container(
-      decoration: decoration,
-      width: 256,
-      padding: EdgeInsets.all(8),
-      child: Text(widget.label,
-          style: theme.text.button.copyWith(
-              color: _disabled
-                  ? theme.text.button.color?.withOpacity(DisabledOpacity)
-                  : theme.text.button.color),
-          textAlign: TextAlign.center),
-    );
+    final container = _mode == ButtonMode.Contained
+        ? _buildContainedContainer(decoration, theme)
+        : _buildOutlinedContainer(decoration, theme);
 
     var physical = PhysicalModel(
       color: Transparent,

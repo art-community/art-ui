@@ -37,7 +37,7 @@ class SpacingTheme {
           fullSpacing: fullSpacing ?? this.fullSpacing);
 
   static final defaultTheme = SpacingTheme(
-      fullSpacing: Spacing(4, 8, 16, 24, 32),
+      fullSpacing: Spacing(4, 6, 8, 16, 32),
       verticalSpacing: Spacing(4, 6, 8, 16, 24));
 }
 

@@ -149,3 +149,10 @@ x64/
 x86/
 *.[Cc]ache
 !*.[Cc]ache/
+# Flutter-related
+**/Flutter/ephemeral/
+**/Pods/
+
+# Xcode-related
+**/dgph
+**/xcuserdata/
